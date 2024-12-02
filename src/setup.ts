@@ -3,11 +3,12 @@ import path from "path";
 
 import minimist from "minimist";
 
-const main = () => {
+const main = async () => {
   const argv = minimist(process.argv.slice(2));
   console.log(argv);
 
   if (argv._.length !== 1) {
+    console.log("From a year directory (e.g. /src/2024/)");
     console.log("usage: tsx setup.ts 3");
     return;
   }
@@ -39,10 +40,12 @@ const fetchInput = async (n: number) => {
   const token = fs.readFileSync(tokenPath, { encoding: "utf8" });
 
   const headers = {
-    Cookie: `session=${token}`,
+    Cookie: `${token}`,
   };
 
   const url = `https://adventofcode.com/2024/day/${n}/input`;
+
+  console.log(`attempting to fetch ${url} with headers: ${token}`);
 
   const resp = await fetch(url, { headers });
   if (!resp.ok) {
@@ -55,7 +58,9 @@ const fetchInput = async (n: number) => {
 
   const destPath = path.resolve(process.cwd(), `${n}.txt`.padStart(6, "0"));
   const inputs = await resp.text();
+
+  // TODO: remove ending newline?
   fs.writeFileSync(destPath, inputs, "utf8");
 };
 
-await main();
+main();
