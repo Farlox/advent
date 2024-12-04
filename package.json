@@ -13,5 +13,9 @@
     "@types/node": "^22.10.1",
     "minimist": "^1.2.8",
     "typescript": "^5.7.2"
+  },
+  "prettier": {
+    "tabWidth": 4,
+    "printWidth": 120
   }
 }
