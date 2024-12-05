@@ -6,14 +6,19 @@ const main = () => {
     const lines = fs.readFileSync(filePath, { encoding: "utf8" }).replaceAll("\r", "").split("\n");
 
     console.time("parse");
-    const rules = lines.filter((line) => line.includes("|")).map((line) => line.split("|").map((s) => parseInt(s, 10)));
 
-    const books = lines.filter((line) => line.includes(",")).map((line) => line.split(",").map((n) => parseInt(n, 10)));
+    const rules = lines
+        .filter((line) => line.includes("|"))
+        .map((line) => line.split("|").map((s) => parseInt(s, 10)));
+
+    const books = lines
+        .filter((line) => line.includes(","))
+        .map((line) => line.split(",").map((n) => parseInt(n, 10)));
 
     console.timeEnd("parse");
 
-    console.log(rules);
-    console.log(books);
+    // console.log(rules);
+    // console.log(books);
 
     let part1 = 0;
     let part2 = 0;
@@ -32,17 +37,15 @@ const main = () => {
 
             return 0;
         });
-        console.log(book);
-        console.log(sortedBook);
+
+        // console.log(book);
+        // console.log(sortedBook);
 
         const good = areEq(book, sortedBook);
         if (good) {
-            const m = mid(book);
-            part1 += m;
-            console.log(`good +${m}`);
+            part1 += mid(book);
         } else {
-            const m = mid(sortedBook);
-            part2 += m;
+            part2 += mid(sortedBook);
         }
     }
 
