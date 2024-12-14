@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { printMatrix } from "./lib";
+import { printMatrix } from "../lib";
 
 const main = () => {
     const isSample = process.argv.length > 2 && process.argv[2] == "--sample";
