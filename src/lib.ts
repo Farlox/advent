@@ -2,6 +2,9 @@ export const unique = <T>(val: T, idx: number, arr: T[]) => arr.indexOf(val) ===
 
 export const printMatrix = (s: string[][]) => console.log(s.map((row) => row.join("")).join("\n"));
 
+export const aEq = (a: number[], b: number[]): boolean =>
+    a.length === b.length && a.every((val, idx) => b[idx] === val);
+
 /* Points */
 export interface Point {
     x: number;
