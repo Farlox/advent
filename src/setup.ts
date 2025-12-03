@@ -40,7 +40,7 @@ const fetchInput = async (n: number) => {
         Cookie: `${token}`,
     };
 
-    const url = `https://adventofcode.com/2024/day/${n}/input`;
+    const url = `https://adventofcode.com/2025/day/${n}/input`;
 
     console.log(`attempting to fetch ${url} with headers: ${token}`);
 
