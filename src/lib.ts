@@ -11,6 +11,16 @@ export interface Point {
     y: number;
 }
 
+export interface Point3 {
+    x: number;
+    y: number;
+    z: number;
+}
+
+export const peq3 = (a: Point3, b: Point3): boolean => a.x === b.x && a.y === b.y && a.z === b.z;
+export const distanceSq3 = (a: Point3, b: Point3) =>
+    Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2);
+
 export const peq = (a: Point, b: Point): boolean => a.x === b.x && a.y === b.y;
 
 export const right = (p: Point): Point => ({ x: p.x + 1, y: p.y });
